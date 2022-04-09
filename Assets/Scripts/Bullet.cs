@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[SerializeField] Rigidbody2D _rigidBody;
+[SerializeField] float _speed;
+[SerializeField] float _lifeLenght;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public void Shoot(Vector3 direction)
+{
+    _rigidBody.AddForce(direction * _speed, ForceMode2D.Impulse);
+    Destroy(gameObject, _lifeLenght);
+}
+
+
+private void OnCollisionEnter2D(Collision2D collision) 
+{
+ Destroy(gameObject);    
+}
+
+
 }

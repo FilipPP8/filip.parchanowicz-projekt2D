@@ -21,6 +21,8 @@ public class PlayerBulletShooter : MonoBehaviour
         {
             Bullet createdBullet = Instantiate<Bullet>(_bulletPrefab, 
             transformPosition.position, Quaternion.identity);
+
+            createdBullet.Shoot(Vector3.right);
         }
 
     }
