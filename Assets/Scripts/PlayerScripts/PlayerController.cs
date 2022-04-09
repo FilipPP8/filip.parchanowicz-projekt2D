@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InputManager _inputManager;
 
     [SerializeField] Rigidbody2D _rigidBody;
+    [SerializeField] HealthSystem _healthSystem;
     [SerializeField] float _speed;
 
     Camera _activeCamera;
@@ -24,8 +25,20 @@ public class PlayerController : MonoBehaviour
         _cameraBounds = new Rect(bottomLeftPosition.x, bottomLeftPosition.y, 
         topRightPosition.x - bottomLeftPosition.x, 
         topRightPosition.y - bottomLeftPosition.y);  
+
+        _healthSystem.OnHealthDepleted += _healthSystem_OnHealthDepleted;
     }
 
+
+    private void OnDestroy()
+    {
+        _healthSystem.OnHealthDepleted -= _healthSystem_OnHealthDepleted;
+    }
+
+    private void _healthSystem_OnHealthDepleted()
+    {
+        Destroy(gameObject);
+    }
     private void FixedUpdate() 
     {
         Vector2 _movementVector = new Vector2 

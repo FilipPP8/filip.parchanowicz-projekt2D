@@ -17,6 +17,13 @@ public void Shoot(Vector3 direction)
 
 private void OnCollisionEnter2D(Collision2D collision) 
 {
+    HealthSystem healthSystem = collision.gameObject.GetComponent<HealthSystem>();
+
+ if(healthSystem != null)
+ {
+     healthSystem.TakeHit(1);
+ }
+
  Destroy(gameObject);    
 }
 
