@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
             new Vector3(_activeCamera.pixelWidth, _activeCamera.pixelHeight));
 
         _cameraBounds = new Rect(bottomLeftPosition.x, bottomLeftPosition.y, 
-        topRightPosition.x - bottomLeftPosition.x, topRightPosition.y - bottomLeftPosition.y);  
+        topRightPosition.x - bottomLeftPosition.x, 
+        topRightPosition.y - bottomLeftPosition.y);  
     }
 
     private void FixedUpdate() 
