@@ -23,6 +23,7 @@ public void Initialize(float leftScreenEdgePosition)
 private void Awake() 
 {
     _healthSystem.OnHealthDepleted += _healthSystem_OnHealthDepleted;
+    _timer = Random.Range(_minInterval, _maxInterval);
 }
 
 private void Update() 
@@ -63,6 +64,8 @@ private void OnDestroy()
 private void _healthSystem_OnHealthDepleted()
 {
     DestroyEnemy();
+
+    GameEvents.EnemyDied(this);
 }
 
 public void DestroyEnemy()
