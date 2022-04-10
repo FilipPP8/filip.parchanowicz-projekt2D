@@ -25,7 +25,12 @@ HealthSystem healthSystem = collision.gameObject.GetComponent<HealthSystem>();
      healthSystem.TakeHit(1);
  }
 
- Destroy(gameObject); 
+ DestroyBullet(); 
+}
+
+public void DestroyBullet()
+{
+    Destroy(gameObject);
 }
 
 

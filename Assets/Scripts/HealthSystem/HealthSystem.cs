@@ -15,7 +15,14 @@ public int CurrentHp {get{return _currentHp;}}
 
 private void Awake() 
 {
+    ResetHP();
+}
+
+public void ResetHP()
+{
     _currentHp = _hpAmountTotal;    
+    OnHealthChanged?.Invoke(_currentHp);
+
 }
 public void TakeHit(int damage)
 {

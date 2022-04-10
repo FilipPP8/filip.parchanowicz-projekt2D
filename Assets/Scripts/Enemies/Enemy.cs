@@ -65,7 +65,7 @@ private void _healthSystem_OnHealthDepleted()
     DestroyEnemy();
 }
 
-private void DestroyEnemy()
+public void DestroyEnemy()
 {
     Destroy(gameObject);
 

@@ -4,16 +4,57 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public static PlayerController Instance;
+    public event System.Action OnPlayerDied;
+    public event System.Action OnPlayerRespawned;
     [SerializeField] InputManager _inputManager;
-
     [SerializeField] Rigidbody2D _rigidBody;
     [SerializeField] HealthSystem _healthSystem;
     [SerializeField] float _speed;
 
+    [SerializeField] GameObject _playerSprite;
+
+    [SerializeField] Collider2D[] _shipColliders;
+
     Camera _activeCamera;
     Rect _cameraBounds;
 
+    Vector3 _spawnPosition;
+
+    bool _isPlayerDead;
+    public void Respawn()
+    {
+        transform.position = _spawnPosition;
+        _healthSystem.ResetHP();
+        _playerSprite.SetActive(true);
+        _isPlayerDead = false;
+
+        SwitchPlayerCollider(true);
+        
+        OnPlayerRespawned?.Invoke();
+    }
+
+    private void SwitchPlayerCollider(bool state)
+    {
+        foreach (var collider in _shipColliders)
+        {
+            collider.enabled = state;
+        }
+    }
+    private void Awake() 
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        _spawnPosition = transform.position;
+
+    }
     private void Start() 
     {
         _activeCamera = Camera.main;
@@ -37,10 +78,18 @@ public class PlayerController : MonoBehaviour
 
     private void _healthSystem_OnHealthDepleted()
     {
-        Destroy(gameObject);
+        OnPlayerDied?.Invoke();
+        _playerSprite.SetActive(false);
+        _isPlayerDead =true;
+
+        SwitchPlayerCollider(false);
     }
     private void FixedUpdate() 
     {
+        if(_isPlayerDead)
+        {
+            return;
+        }
         Vector2 _movementVector = new Vector2 
         (_inputManager.HorizontalInput * _speed, _inputManager.VerticalInput * _speed);
 

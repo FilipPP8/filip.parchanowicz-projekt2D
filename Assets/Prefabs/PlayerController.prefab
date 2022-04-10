@@ -98,6 +98,9 @@ MonoBehaviour:
   _rigidBody: {fileID: 390276193156866923}
   _healthSystem: {fileID: 2673945698195471522}
   _speed: 50
+  _playerSprite: {fileID: 6977573367845377544}
+  _shipColliders:
+  - {fileID: 2505887562900434326}
 --- !u!114 &-5561433615293056644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24673011a8784254faf11ec208514c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myPlayerController: {fileID: 404215262284263176}
   _inputManager: {fileID: 5775441446520647816}
   _bulletPositions:
   - {fileID: 7043476313790795822}

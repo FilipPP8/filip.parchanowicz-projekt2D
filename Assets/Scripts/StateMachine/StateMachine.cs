@@ -8,7 +8,7 @@ public class StateMachine : MonoBehaviour
 
 private void Start()
 {
-    EnterState(new DemoState());
+    EnterState(new GameState());
 }
 
 private void Update()

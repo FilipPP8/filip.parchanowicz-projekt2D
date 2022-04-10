@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
+    public static EnemySpawner Instance;
     [SerializeField] Enemy _enemyPrefab;
 
     private float _leftXPosition, _xPosition, _yMin, _yMax;
  private void Awake() 
  {
+    if (Instance == null)
+    {
+        Instance = this;
+    }
+    else
+    {
+        Destroy(gameObject);
+        return;
+    }
+
     var _activeCamera = Camera.main;
 
     Vector3 bottomLeftPosition = _activeCamera.ScreenToWorldPoint(Vector3.zero);
@@ -23,10 +33,10 @@ public class EnemySpawner : MonoBehaviour
 
     _xPosition = topRightPosition.x; //- bottomLeftPosition.x; -> spawn behind the edge
 
-    for (int i = 0; i <5 ; i++)
-    {
-        SpawnEnemy();
-    }
+    // for (int i = 0; i <5 ; i++)
+    // {
+    //     SpawnEnemy();
+    // }
 
  }
 
