@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     public event System.Action OnPlayerDied;
     public event System.Action OnPlayerRespawned;
+
+    public HealthSystem HealthSystem
+    {
+        get {return _healthSystem;}
+    }
     [SerializeField] InputManager _inputManager;
     [SerializeField] Rigidbody2D _rigidBody;
     [SerializeField] HealthSystem _healthSystem;
