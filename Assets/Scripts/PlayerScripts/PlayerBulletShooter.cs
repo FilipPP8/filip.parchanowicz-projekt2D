@@ -9,7 +9,7 @@ public class PlayerBulletShooter : MonoBehaviour
    [SerializeField] Transform[] _bulletPositions;
    [SerializeField] Bullet _bulletPrefab;
 
-    bool _areWeaponsDisabled;
+    bool _areWeaponsDisabled = true;
     private void Awake() 
     {
         _myPlayerController.OnPlayerDied += _myPlayerController_OnPlayerDied;

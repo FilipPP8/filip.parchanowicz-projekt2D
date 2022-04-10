@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 _spawnPosition;
 
-    bool _isPlayerDead;
+    bool _isPlayerDead = true;
     public void Respawn()
     {
         transform.position = _spawnPosition;
@@ -79,11 +79,17 @@ public class PlayerController : MonoBehaviour
     private void _healthSystem_OnHealthDepleted()
     {
         OnPlayerDied?.Invoke();
+        DisablePlayer();
+    }
+
+    private void DisablePlayer()
+    {
         _playerSprite.SetActive(false);
-        _isPlayerDead =true;
+        _isPlayerDead = true;
 
         SwitchPlayerCollider(false);
     }
+
     private void FixedUpdate() 
     {
         if(_isPlayerDead)
