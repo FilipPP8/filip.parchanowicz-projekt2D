@@ -18,6 +18,8 @@ public class GameState : BaseState
 
         ClearUpAfterLastGame();
 
+        UIManager.Instance.ShowHUD();
+
     }
 
     public override void UpdateState()

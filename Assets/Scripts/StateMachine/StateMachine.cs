@@ -32,10 +32,5 @@ public void EnterState(BaseState stateToEnter)
 }
 
 
-public void OnStartGameButtonPressed()
-{
-    EnterState(new GameState());
-}
-
 
 }

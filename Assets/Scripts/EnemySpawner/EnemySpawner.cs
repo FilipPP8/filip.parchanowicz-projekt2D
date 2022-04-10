@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
 public void SpawnEnemy()
     {
     var enemy = Instantiate<Enemy>(_enemyPrefab, 
-    new Vector3(_xPosition +2, Random.Range(_yMin, _yMax), 0), 
+    new Vector3(_xPosition +1, Random.Range(_yMin, _yMax), 0), 
     Quaternion.identity);
 
     enemy.Initialize(_leftXPosition);

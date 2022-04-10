@@ -7,6 +7,7 @@ public class LoseState : BaseState
     public override void EnterState(StateMachine stateMachine)
     {
         base.EnterState(stateMachine);
+        UIManager.Instance.ShowLoseScreen();
     }
 
     public override void UpdateState()

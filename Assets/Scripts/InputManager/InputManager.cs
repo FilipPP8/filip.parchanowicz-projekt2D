@@ -32,9 +32,6 @@ private void GetInput()
     _verticalInput = Input.GetAxisRaw(InputNames.VERTICAL_INPUT_NAME);
     _shootInput = Input.GetButtonDown(InputNames.SHOOT_INPUT_NAME);
 
-    if(_shootInput)
-    {
-        Debug.Log("shoot");
-    }
+
     }
 }
