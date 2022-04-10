@@ -15,6 +15,11 @@ public class Enemy : MonoBehaviour
 
 private float _timer = -1f;
 
+float _despawnPosition;
+public void Initialize(float leftScreenEdgePosition)
+{
+    _despawnPosition = leftScreenEdgePosition;
+}
 private void Awake() 
 {
     _healthSystem.OnHealthDepleted += _healthSystem_OnHealthDepleted;
@@ -29,6 +34,14 @@ private void Update()
     }
 
     _timer -= Time.deltaTime;    
+}
+
+private void LateUpdate()
+{
+    if(transform.position.x < _despawnPosition)
+    {
+        DestroyEnemy();
+    }
 }
 
 private void Shoot()
@@ -49,7 +62,13 @@ private void OnDestroy()
 
 private void _healthSystem_OnHealthDepleted()
 {
+    DestroyEnemy();
+}
+
+private void DestroyEnemy()
+{
     Destroy(gameObject);
+
 }
 
 private void OnTriggerEnter2D(Collider2D collision) 

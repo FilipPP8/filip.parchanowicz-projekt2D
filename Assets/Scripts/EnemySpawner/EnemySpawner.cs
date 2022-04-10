@@ -6,7 +6,9 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [SerializeField] Enemy _enemyPrefab;
- private void Start() 
+
+    private float _leftXPosition, _xPosition, _yMin, _yMax;
+ private void Awake() 
  {
     var _activeCamera = Camera.main;
 
@@ -14,18 +16,30 @@ public class EnemySpawner : MonoBehaviour
     Vector3 topRightPosition = _activeCamera.ScreenToWorldPoint (
         new Vector3(_activeCamera.pixelWidth, _activeCamera.pixelHeight));
 
-    var bottomY = bottomLeftPosition.y;
-    var topY = topRightPosition.y;
+    _yMin = bottomLeftPosition.y;
+    _yMax = topRightPosition.y;
 
-    var rightEdge = topRightPosition.x; //- bottomLeftPosition.x;
+    _leftXPosition = bottomLeftPosition.x;
+
+    _xPosition = topRightPosition.x; //- bottomLeftPosition.x; -> spawn behind the edge
 
     for (int i = 0; i <5 ; i++)
     {
-    Instantiate<Enemy>(_enemyPrefab, 
-    new Vector3(rightEdge, Random.Range(bottomY, topY), 0), 
-    Quaternion.identity);
+        SpawnEnemy();
     }
+
+ }
+
+public void SpawnEnemy()
+    {
+    var enemy = Instantiate<Enemy>(_enemyPrefab, 
+    new Vector3(_xPosition +2, Random.Range(_yMin, _yMax), 0), 
+    Quaternion.identity);
+
+    enemy.Initialize(_leftXPosition);
+    }
+
  }
 
 
-}
+

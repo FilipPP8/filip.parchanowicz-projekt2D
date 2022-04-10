@@ -133,7 +133,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8980301895661366468, guid: c814482b41b588f4d8154b8a8228b7c6, type: 3}
   _rigidBody2D: {fileID: 279985076941803565}
   _speed: 2
-  _minInterval: 0.5
+  _minInterval: 0.7
   _maxInterval: 1.5
 --- !u!114 &1713796029929343160
 MonoBehaviour:
