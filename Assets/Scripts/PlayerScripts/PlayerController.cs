@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject _playerSprite;
 
+    [SerializeField] GameObject _explosionAnimation;
+
     [SerializeField] Collider2D[] _shipColliders;
 
     Camera _activeCamera;
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
     private void _healthSystem_OnHealthDepleted()
     {
         OnPlayerDied?.Invoke();
+        Explode();
         DisablePlayer();
     }
 
@@ -117,5 +120,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    private void Explode()
+{
+    GameObject createdExplosion = Instantiate<GameObject>(_explosionAnimation,
+    transform.position, Quaternion.identity);
+
+    Destroy(createdExplosion, 3);
+}
 
 }

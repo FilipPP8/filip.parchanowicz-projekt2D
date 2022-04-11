@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthSystem: {fileID: 1713796029929343160}
   _bulletPrefab: {fileID: 8980301895661366468, guid: c814482b41b588f4d8154b8a8228b7c6, type: 3}
+  _explosionAnimation: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
   _rigidBody2D: {fileID: 279985076941803565}
   _speed: 2
   _minInterval: 0.7
