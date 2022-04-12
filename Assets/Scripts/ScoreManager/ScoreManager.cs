@@ -21,4 +21,11 @@ public class ScoreManager : MonoBehaviour
         GameEvents.OnEnemyDied -= GameEvents_OnEnemyDied;
     }
 
+////////
+    public void ResetScore()
+    {
+        _score = 0;
+        GameEvents.ScoreUpdated(_score);
+    } 
+
 }

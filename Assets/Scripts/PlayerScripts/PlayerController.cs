@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] HealthSystem _healthSystem;
     [SerializeField] float _speed;
 
+    [SerializeField] ScoreManager _scoreManager;
     [SerializeField] GameObject _playerSprite;
 
     [SerializeField] GameObject _explosionAnimation;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = _spawnPosition;
         _healthSystem.ResetHP();
+        _scoreManager.ResetScore();
         _playerSprite.SetActive(true);
         _isPlayerDead = false;
 

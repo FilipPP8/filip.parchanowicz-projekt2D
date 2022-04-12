@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 727489352}
   - component: {fileID: 727489351}
   m_Layer: 5
-  m_Name: GameTitle
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -728,7 +728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &968650599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1642,6 +1642,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404215262284263176, guid: c32eaf26bf4d4ee4c83c02c6a0f72977, type: 3}
+      propertyPath: _scoreManager
+      value: 
+      objectReference: {fileID: 1439858590}
     - target: {fileID: 3081496820093277758, guid: c32eaf26bf4d4ee4c83c02c6a0f72977, type: 3}
       propertyPath: m_Name
       value: PlayerController

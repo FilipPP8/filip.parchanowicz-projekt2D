@@ -22,6 +22,12 @@ public class HUDView : BaseView
     private void GameEvents_OnScoreUpdated(int score)
     {
         _scoreCounter.text = score.ToString();
+        
+        // if (score > PlayerPrefs.GetInt("Highscore"))
+        // {
+        //     PlayerPrefs.SetInt("Highscore", score);
+        // }
+
     }
     private void HealthSystem_OnHealthChanged(int obj)
     {

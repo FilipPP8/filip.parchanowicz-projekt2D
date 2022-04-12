@@ -98,6 +98,7 @@ MonoBehaviour:
   _rigidBody: {fileID: 390276193156866923}
   _healthSystem: {fileID: 2673945698195471522}
   _speed: 50
+  _scoreManager: {fileID: 0}
   _playerSprite: {fileID: 6977573367845377544}
   _explosionAnimation: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
   _shipColliders:

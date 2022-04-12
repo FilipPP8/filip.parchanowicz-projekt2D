@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LoseView : BaseView
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // [SerializeField] TMP_Text _highscoreWindow;
+    
+    // void Start()
+    // {
+    //     int _highscore = PlayerPrefs.GetInt("Highscore");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //     _highscoreWindow.text = "Highscore:\n" + _highscore.ToString();      
+    // }
+
 }
