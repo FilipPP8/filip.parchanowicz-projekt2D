@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 7797460610991085494, guid: c7990b51b5acd6b47a2184296f455a5c, type: 3}
+  _strongerEnemyPrefab: {fileID: 5615407160404046761, guid: 4c65e310d62cd804e97784322b070bb3, type: 3}
 --- !u!4 &305519424
 Transform:
   m_ObjectHideFlags: 0
@@ -300,6 +301,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &321447819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 321447821}
+  - component: {fileID: 321447820}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &321447820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321447819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e043c31adc19e44fb7bea797591f533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: 0
+--- !u!4 &321447821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321447819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03035255, y: 1.3845109, z: -1.9443178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356182311
 GameObject:
@@ -1235,7 +1280,6 @@ GameObject:
   - component: {fileID: 1439858592}
   - component: {fileID: 1439858591}
   - component: {fileID: 1439858589}
-  - component: {fileID: 1439858590}
   m_Layer: 5
   m_Name: Score_Count
   m_TagString: Untagged
@@ -1332,19 +1376,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1439858590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439858588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e043c31adc19e44fb7bea797591f533, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _score: 0
 --- !u!222 &1439858591
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1900,7 +1931,7 @@ PrefabInstance:
     - target: {fileID: 404215262284263176, guid: c32eaf26bf4d4ee4c83c02c6a0f72977, type: 3}
       propertyPath: _scoreManager
       value: 
-      objectReference: {fileID: 1439858590}
+      objectReference: {fileID: 321447820}
     - target: {fileID: 3081496820093277758, guid: c32eaf26bf4d4ee4c83c02c6a0f72977, type: 3}
       propertyPath: m_Name
       value: PlayerController

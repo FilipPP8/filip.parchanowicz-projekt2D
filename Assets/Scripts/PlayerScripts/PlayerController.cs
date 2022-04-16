@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _speed;
 
     [SerializeField] ScoreManager _scoreManager;
+
+    public ScoreManager ScoreManager {get {return _scoreManager;}}
     [SerializeField] GameObject _playerSprite;
 
     [SerializeField] GameObject _explosionAnimation;

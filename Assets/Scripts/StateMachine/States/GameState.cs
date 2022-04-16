@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameState : BaseState
 {
+    public static GameState Instance;
     private float _spawnInterval = 1.5f;
     private float _currentTime;
 
+    private int _score;
     int _spawnedShips = 0;
     public override void EnterState(StateMachine stateMachine)
     {
@@ -27,14 +29,21 @@ public class GameState : BaseState
         base.UpdateState();
         _currentTime -= Time.deltaTime;
 
+        _score = PlayerController.Instance.ScoreManager.Score;
+
         if(_currentTime < 0f)
         {
             EnemySpawner.Instance.SpawnEnemy();
             _currentTime = _spawnInterval;
 
             _spawnedShips++;
-
         }
+
+        if (_score > 0 && _score % 300 == 0)
+        {
+            EnemySpawner.Instance.SpawnStrongerEnemy();
+        }
+
     }
 
     public override void ExitState()
@@ -44,6 +53,7 @@ public class GameState : BaseState
         base.ExitState();
     }
 
+
     private void PlayerInstance_OnPlayerDied()
     {
         _myStateMachine.EnterState(new LoseState());
@@ -51,6 +61,7 @@ public class GameState : BaseState
 
     private void ClearUpAfterLastGame()
     {
+        EnemySpawner.Instance._isStrongerEnemyAlive = false;
         Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
         Bullet[] bullets = GameObject.FindObjectsOfType<Bullet>();
 

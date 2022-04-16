@@ -10,6 +10,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Enemy _strongerEnemyPrefab;
 
     private float _leftXPosition, _xPosition, _yMin, _yMax;
+
+    public bool _isStrongerEnemyAlive = false;
+
+
  private void Awake() 
  {
     if (Instance == null)
@@ -47,11 +51,15 @@ public void SpawnEnemy()
     }
 public void SpawnStrongerEnemy()
 {
+    if (_isStrongerEnemyAlive == false)
+    {
     var enemy = Instantiate<Enemy>(_strongerEnemyPrefab, 
     new Vector3(_xPosition +1, Random.Range(_yMin, _yMax), 0), 
     Quaternion.identity);
 
     enemy.Initialize(_leftXPosition);
+    _isStrongerEnemyAlive = true;
+    }
 }
  }
 

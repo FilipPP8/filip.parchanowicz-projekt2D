@@ -88,8 +88,8 @@ HealthSystem healthSystem = collision.gameObject.GetComponent<HealthSystem>();
 
  if(healthSystem != null)
  {
-     healthSystem.TakeHit(1);
-     _healthSystem.TakeHit(1);
+    healthSystem.TakeHit(1);
+    _healthSystem.TakeHit(1);
  }
 
 }

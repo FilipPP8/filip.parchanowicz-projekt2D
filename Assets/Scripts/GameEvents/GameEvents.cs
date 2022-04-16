@@ -13,6 +13,10 @@ public static void EnemyDied(Enemy enemy)
     {
         return;
     }
+    if (enemy.tag == "StrongerEnemy")
+    {
+        EnemySpawner.Instance._isStrongerEnemyAlive = false;
+    }
     GameObject createdExplosion = Instantiate<GameObject>(enemy.ExplosionAnimation,
     enemy.transform.position, Quaternion.identity);
 

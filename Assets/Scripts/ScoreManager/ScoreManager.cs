@@ -5,6 +5,11 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] int _score;
+
+    private int _basicEnemyScoreValue = 100;
+    private int _strongerEnemyScoreValue = 200;
+
+    public int Score {get{ return _score;} }
     private void Awake()
     {
         GameEvents.OnEnemyDied += GameEvents_OnEnemyDied;
@@ -12,13 +17,18 @@ public class ScoreManager : MonoBehaviour
 
     private void GameEvents_OnEnemyDied(Enemy obj)
     {
-        _score += 100;
-        GameEvents.ScoreUpdated(_score);
-        
-        if (_score > PlayerPrefs.GetInt("Highscore",0))
+        if (obj.tag == "StrongerEnemy")
         {
-            PlayerPrefs.SetInt("Highscore", _score);
+        _score += _strongerEnemyScoreValue;
         }
+        else
+        {
+        _score += _basicEnemyScoreValue;
+        }
+        
+        GameEvents.ScoreUpdated(_score);
+
+        CheckHighscore();
     }
 
     private void OnDestroy() 
