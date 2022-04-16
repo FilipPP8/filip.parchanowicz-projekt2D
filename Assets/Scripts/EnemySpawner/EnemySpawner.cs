@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner Instance;
     [SerializeField] Enemy _enemyPrefab;
 
+    [SerializeField] Enemy _strongerEnemyPrefab;
+
     private float _leftXPosition, _xPosition, _yMin, _yMax;
  private void Awake() 
  {
@@ -33,11 +35,6 @@ public class EnemySpawner : MonoBehaviour
 
     _xPosition = topRightPosition.x; //- bottomLeftPosition.x; -> spawn behind the edge
 
-    // for (int i = 0; i <5 ; i++)
-    // {
-    //     SpawnEnemy();
-    // }
-
  }
 
 public void SpawnEnemy()
@@ -48,7 +45,14 @@ public void SpawnEnemy()
 
     enemy.Initialize(_leftXPosition);
     }
+public void SpawnStrongerEnemy()
+{
+    var enemy = Instantiate<Enemy>(_strongerEnemyPrefab, 
+    new Vector3(_xPosition +1, Random.Range(_yMin, _yMax), 0), 
+    Quaternion.identity);
 
+    enemy.Initialize(_leftXPosition);
+}
  }
 
 

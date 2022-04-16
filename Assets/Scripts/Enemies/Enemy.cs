@@ -59,13 +59,7 @@ private void Shoot()
         createdBullet.Shoot(Vector3.left);
 }
 
-// private void Explode()
-// {
-//     GameObject createdExplosion = Instantiate<GameObject>(_explosionAnimation,
-//     transform.position, Quaternion.identity);
 
-//     Destroy(createdExplosion, 3);
-// }
 private void FixedUpdate() 
 {
     _rigidBody2D.velocity = Vector2.left * _speed;    
@@ -78,7 +72,6 @@ private void OnDestroy()
 private void _healthSystem_OnHealthDepleted()
 {
     DestroyEnemy();
-    // Explode();
     GameEvents.EnemyDied(this);
 }
 

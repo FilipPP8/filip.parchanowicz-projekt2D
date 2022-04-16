@@ -26,7 +26,13 @@ public class ScoreManager : MonoBehaviour
         GameEvents.OnEnemyDied -= GameEvents_OnEnemyDied;
     }
 
-////////
+    public void CheckHighscore()
+    {
+        if (_score > PlayerPrefs.GetInt("Highscore",0))
+        {
+            PlayerPrefs.SetInt("Highscore", _score);
+        }
+    }
     public void ResetScore()
     {
         _score = 0;
