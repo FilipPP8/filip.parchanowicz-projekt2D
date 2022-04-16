@@ -14,6 +14,11 @@ public class ScoreManager : MonoBehaviour
     {
         _score += 100;
         GameEvents.ScoreUpdated(_score);
+        
+        if (_score > PlayerPrefs.GetInt("Highscore",0))
+        {
+            PlayerPrefs.SetInt("Highscore", _score);
+        }
     }
 
     private void OnDestroy() 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEvents
+public class GameEvents : MonoBehaviour
 {
 
 public static event System.Action<Enemy> OnEnemyDied;
@@ -13,6 +13,10 @@ public static void EnemyDied(Enemy enemy)
     {
         return;
     }
+    GameObject createdExplosion = Instantiate<GameObject>(enemy.ExplosionAnimation,
+    enemy.transform.position, Quaternion.identity);
+
+    Destroy(createdExplosion, 3);
 
     OnEnemyDied?.Invoke(enemy);
 }
