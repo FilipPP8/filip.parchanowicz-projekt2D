@@ -45,10 +45,18 @@ private void Update()
 
 private void LateUpdate()
 {
-    if(transform.position.x < _despawnPosition)
+    if(transform.position.x < _despawnPosition  && gameObject.tag == "StrongerEnemy")
+    {
+
+        EnemySpawner.Instance._isStrongerEnemyAlive = false;
+        DestroyEnemy();
+    }
+    else if (transform.position.x < _despawnPosition)
     {
         DestroyEnemy();
     }
+    
+
 }
 
 private void Shoot()
