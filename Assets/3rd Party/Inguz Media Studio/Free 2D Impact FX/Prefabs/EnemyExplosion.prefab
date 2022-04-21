@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8038344524183138614}
   - component: {fileID: 8038344524183138615}
   - component: {fileID: 8038344524183138612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4828,7 +4828,6 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8ca56286b051f1d48a4e9df54d9feabc, type: 2}
   - {fileID: 2100000, guid: 8ca56286b051f1d48a4e9df54d9feabc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

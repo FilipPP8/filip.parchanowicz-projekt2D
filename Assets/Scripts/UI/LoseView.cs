@@ -20,5 +20,10 @@ public class LoseView : BaseView
         _highscore.text = "Highscore:\n 0";
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     
 }
