@@ -6,14 +6,20 @@ public class GameState : BaseState
 {
     public static GameState Instance;
     private float _spawnInterval = 1.5f;
+
+    private float _bossSpawnInterval = 25f;
     private float _currentTime;
 
+    private float _currentTimeForBossSpawn;
     private int _score;
-    int _spawnedShips = 0;
+    bool _gamePaused = false;
+
+
     public override void EnterState(StateMachine stateMachine)
     {
         base.EnterState(stateMachine);
         _currentTime = _spawnInterval;
+        _currentTimeForBossSpawn = _bossSpawnInterval;
 
         PlayerController.Instance.OnPlayerDied += PlayerInstance_OnPlayerDied;
         PlayerController.Instance.Respawn();
@@ -21,13 +27,19 @@ public class GameState : BaseState
         ClearUpAfterLastGame();
 
         UIManager.Instance.ShowHUD();
+        Time.timeScale = 1f;
+        
+        GameEvents.OnEnemyDied += GameEvents_OnEnemyDied;
+
 
     }
 
     public override void UpdateState()
     {
+        
         base.UpdateState();
         _currentTime -= Time.deltaTime;
+        _currentTimeForBossSpawn -= Time.deltaTime;
 
         _score = PlayerController.Instance.ScoreManager.Score;
 
@@ -35,8 +47,6 @@ public class GameState : BaseState
         {
             EnemySpawner.Instance.SpawnEnemy();
             _currentTime = _spawnInterval;
-
-            _spawnedShips++;
         }
 
         if (_score > 0 && _score % 300 == 0)
@@ -44,12 +54,21 @@ public class GameState : BaseState
             EnemySpawner.Instance.SpawnStrongerEnemy();
         }
 
+        if (_currentTimeForBossSpawn < 0f)
+        {
+            EnemySpawner.Instance.SpawnBoss();
+        }
+
+
+        CheckPauseButton();
+
     }
 
     public override void ExitState()
     {
         PlayerController.Instance.OnPlayerDied -= PlayerInstance_OnPlayerDied;
-        
+        Time.timeScale = 1f;
+
         base.ExitState();
     }
 
@@ -59,11 +78,21 @@ public class GameState : BaseState
         _myStateMachine.EnterState(new LoseState());
     }
 
+    private void GameEvents_OnEnemyDied(Enemy obj)
+    {
+        if(obj.tag == "Boss")
+        {
+        _currentTimeForBossSpawn = _bossSpawnInterval;
+        }
+    }
+
+
     private void ClearUpAfterLastGame()
     {
         EnemySpawner.Instance._isStrongerEnemyAlive = false;
         Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
         Bullet[] bullets = GameObject.FindObjectsOfType<Bullet>();
+        BasePowerup[] powerups = GameObject.FindObjectsOfType<BasePowerup>();
 
         foreach(Enemy enemy in enemies)
         {
@@ -74,5 +103,29 @@ public class GameState : BaseState
         {
             bullet.DestroyBullet();
         }
+
+        foreach(BasePowerup powerup in powerups)
+        {
+            powerup.DestroyPowerup();
+        }
+    }
+
+    private void CheckPauseButton()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            if (_gamePaused)
+            {
+                Time.timeScale = 1f;
+            }
+            else 
+            {
+                Time.timeScale = 0f;
+            }
+
+            _gamePaused = !_gamePaused;
+        }
+
+        GameEvents.GamePaused(this, _gamePaused);
     }
 }

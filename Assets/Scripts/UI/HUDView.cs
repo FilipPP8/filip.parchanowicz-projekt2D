@@ -8,17 +8,27 @@ public class HUDView : BaseView
     [SerializeField] TMP_Text _lifeCounter;
     [SerializeField] TMP_Text _scoreCounter;
 
+    [SerializeField] GameObject _pauseText;
+
     public override void ShowView()
     {
         base.ShowView();
+
+        _pauseText.SetActive(false);
         
         PlayerController.Instance.HealthSystem.OnHealthChanged +=
         HealthSystem_OnHealthChanged;
 
         GameEvents.OnScoreUpdated += GameEvents_OnScoreUpdated;
         UpdateText(PlayerController.Instance.HealthSystem.CurrentHp);
+
+        GameEvents.OnGamePaused += GameEvents_OnGamePaused;
     }
 
+    private void GameEvents_OnGamePaused(bool pauseState)
+    {
+        _pauseText.SetActive(pauseState);
+    }
     private void GameEvents_OnScoreUpdated(int score)
     {
         _scoreCounter.text = "Score: " + score.ToString();
@@ -37,6 +47,8 @@ public class HUDView : BaseView
     public override void HideView()
     {
         base.HideView();
+        GameEvents.OnGamePaused -= GameEvents_OnGamePaused;
+
     }
 
 }

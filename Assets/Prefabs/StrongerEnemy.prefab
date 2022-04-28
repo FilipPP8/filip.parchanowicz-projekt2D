@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcc09abc97a9124fbe2ed0f685009b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpAmountTotal: 2
+  _hpAmountTotal: 3
 --- !u!50 &7491522198417308193
 Rigidbody2D:
   serializedVersion: 4
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.82, y: 0.84}
+  m_Size: {x: 1.29, y: 1.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

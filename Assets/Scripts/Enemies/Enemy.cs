@@ -5,34 +5,34 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-[SerializeField] HealthSystem _healthSystem;
-[SerializeField] Bullet _bulletPrefab;
+[SerializeField] protected HealthSystem _healthSystem;
+[SerializeField] protected Bullet _bulletPrefab;
 
-[SerializeField] GameObject _explosionAnimation;
+[SerializeField] protected GameObject _explosionAnimation;
 
 public GameObject ExplosionAnimation
 {get {return _explosionAnimation;}}
 
-[SerializeField] Rigidbody2D _rigidBody2D;
+[SerializeField] protected Rigidbody2D _rigidBody2D;
 
-[SerializeField] float _speed;
+[SerializeField] protected float _speed;
 
-[SerializeField] float _minInterval, _maxInterval;
+[SerializeField] protected float _minInterval, _maxInterval;
 
-private float _timer = -1f;
+protected float _timer = -1f;
 
 float _despawnPosition;
 public void Initialize(float leftScreenEdgePosition)
 {
     _despawnPosition = leftScreenEdgePosition;
 }
-private void Awake() 
+protected virtual void Awake() 
 {
     _healthSystem.OnHealthDepleted += _healthSystem_OnHealthDepleted;
     _timer = Random.Range(_minInterval, _maxInterval);
 }
 
-private void Update() 
+protected virtual void Update() 
 {
     if(_timer <= 0)
     {
@@ -45,13 +45,7 @@ private void Update()
 
 private void LateUpdate()
 {
-    if(transform.position.x < _despawnPosition  && gameObject.tag == "StrongerEnemy")
-    {
-
-        EnemySpawner.Instance._isStrongerEnemyAlive = false;
-        DestroyEnemy();
-    }
-    else if (transform.position.x < _despawnPosition)
+    if (transform.position.x < _despawnPosition)
     {
         DestroyEnemy();
     }
@@ -59,7 +53,14 @@ private void LateUpdate()
 
 }
 
-private void Shoot()
+protected virtual void Move()
+{
+    _rigidBody2D.velocity = Vector2.left * _speed;    
+
+}
+
+
+protected virtual void Shoot()
 {
         Bullet createdBullet = Instantiate<Bullet>(_bulletPrefab, 
         transform.position, Quaternion.identity);
@@ -70,14 +71,14 @@ private void Shoot()
 
 private void FixedUpdate() 
 {
-    _rigidBody2D.velocity = Vector2.left * _speed;    
+    Move();
 }
 private void OnDestroy() 
 {
     _healthSystem.OnHealthDepleted -= _healthSystem_OnHealthDepleted;
 }
 
-private void _healthSystem_OnHealthDepleted()
+protected void _healthSystem_OnHealthDepleted()
 {
     DestroyEnemy();
     GameEvents.EnemyDied(this);
@@ -85,7 +86,20 @@ private void _healthSystem_OnHealthDepleted()
 
 public void DestroyEnemy()
 {
-    Destroy(gameObject);
+    if(gameObject.tag == "StrongerEnemy")
+    {
+        EnemySpawner.Instance._isStrongerEnemyAlive = false;
+        Destroy(gameObject);
+    }
+    else if (gameObject.tag == "Boss")
+    {
+        EnemySpawner.Instance._isBossAlive = false;
+        Destroy(gameObject);
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
 
 }
 

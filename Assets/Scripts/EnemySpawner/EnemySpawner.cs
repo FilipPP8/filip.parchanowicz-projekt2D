@@ -9,11 +9,13 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] Enemy _strongerEnemyPrefab;
 
+    [SerializeField] Boss _bossPrefab;
+
     private float _leftXPosition, _xPosition, _yMin, _yMax;
 
     public bool _isStrongerEnemyAlive = false;
 
-
+    public bool _isBossAlive = false;
  private void Awake() 
  {
     if (Instance == null)
@@ -43,15 +45,18 @@ public class EnemySpawner : MonoBehaviour
 
 public void SpawnEnemy()
     {
-    var enemy = Instantiate<Enemy>(_enemyPrefab, 
-    new Vector3(_xPosition +1, Random.Range(_yMin, _yMax), 0), 
-    Quaternion.identity);
+        if(_isBossAlive == false)
+        {
+        var enemy = Instantiate<Enemy>(_enemyPrefab, 
+        new Vector3(_xPosition +1, Random.Range(_yMin, _yMax), 0), 
+        Quaternion.identity);
 
-    enemy.Initialize(_leftXPosition);
+        enemy.Initialize(_leftXPosition);
+        }
     }
 public void SpawnStrongerEnemy()
 {
-    if (_isStrongerEnemyAlive == false)
+    if (_isStrongerEnemyAlive == false && _isBossAlive == false)
     {
     var enemy = Instantiate<Enemy>(_strongerEnemyPrefab, 
     new Vector3(_xPosition +1, Random.Range(_yMin, _yMax), 0), 
@@ -59,6 +64,18 @@ public void SpawnStrongerEnemy()
 
     enemy.Initialize(_leftXPosition);
     _isStrongerEnemyAlive = true;
+    }
+}
+
+public void SpawnBoss()
+{
+    if (_isBossAlive == false)
+    {
+    var boss = Instantiate<Enemy>(_bossPrefab, 
+    new Vector3 (_xPosition, 0, 0), Quaternion.identity);
+    
+    boss.Initialize(_leftXPosition);
+    _isBossAlive = true;
     }
 }
  }

@@ -14,6 +14,7 @@ public class PlayerBulletShooter : MonoBehaviour
     {
         _myPlayerController.OnPlayerDied += _myPlayerController_OnPlayerDied;
         _myPlayerController.OnPlayerRespawned += _myPlayerController_OnPlayerRespawned;
+        GameEvents.OnGamePaused += GameEvents_OnGamePaused;
     }
     private void Update() {
 
@@ -54,5 +55,10 @@ public class PlayerBulletShooter : MonoBehaviour
     private void _myPlayerController_OnPlayerRespawned()
     {
         _areWeaponsDisabled = false;
+    }
+
+    private void GameEvents_OnGamePaused(bool pauseState)
+    {
+        _areWeaponsDisabled = pauseState;
     }
 }

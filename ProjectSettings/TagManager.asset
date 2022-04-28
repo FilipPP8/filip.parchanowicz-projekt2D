@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BasicEnemy
   - StrongerEnemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - PlayerBullet
   - Enemy
   - EnemyBullet
-  - 
-  - 
+  - PostProcessing
+  - Powerups
   - 
   - 
   - 

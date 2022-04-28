@@ -36,6 +36,19 @@ public void TakeHit(int damage)
     }
 }
 
+public void Heal(int hp)
+{
+    int previousHP = _currentHp;
+
+    _currentHp += hp;
+
+    if (_currentHp > _hpAmountTotal)
+    {
+        _currentHp = _hpAmountTotal;
+    }
+
+    OnHealthChanged?.Invoke(_currentHp);
+}
 private void Die()
 {
     OnHealthDepleted?.Invoke();

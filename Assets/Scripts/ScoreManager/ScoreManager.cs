@@ -9,6 +9,8 @@ public class ScoreManager : MonoBehaviour
     private int _basicEnemyScoreValue = 100;
     private int _strongerEnemyScoreValue = 200;
 
+    private int _bossScoreValue = 1000;
+
     public int Score {get{ return _score;} }
     private void Awake()
     {
@@ -20,6 +22,10 @@ public class ScoreManager : MonoBehaviour
         if (obj.tag == "StrongerEnemy")
         {
         _score += _strongerEnemyScoreValue;
+        }
+        else if (obj.tag == "Boss")
+        {
+        _score += _bossScoreValue;
         }
         else
         {
