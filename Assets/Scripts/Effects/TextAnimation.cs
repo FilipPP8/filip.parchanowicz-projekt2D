@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HitEffect : MonoBehaviour
+public class TextAnimation : MonoBehaviour
 {
    TMP_Text _text;
    [SerializeField] Color _colorStart, _colorEnd;

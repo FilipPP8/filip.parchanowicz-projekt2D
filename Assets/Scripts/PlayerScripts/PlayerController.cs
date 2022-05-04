@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Collider2D[] _shipColliders;
 
+    [SerializeField] GameObject _playerEngine;
+
     Camera _activeCamera;
     Rect _cameraBounds;
 
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         _healthSystem.ResetHP();
         _scoreManager.ResetScore();
         _playerSprite.SetActive(true);
+        _playerEngine.SetActive(true);
         _isPlayerDead = false;
 
         SwitchPlayerCollider(true);
@@ -99,6 +102,7 @@ public class PlayerController : MonoBehaviour
     private void DisablePlayer()
     {
         _playerSprite.SetActive(false);
+        _playerEngine.SetActive(false);
         _isPlayerDead = true;
 
         SwitchPlayerCollider(false);
