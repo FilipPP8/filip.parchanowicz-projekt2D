@@ -8,6 +8,13 @@ public class MenuState : BaseState
     {
         base.EnterState(stateMachine);
         UIManager.Instance.ShowMainMenu();
+        
+        if (AudioManager.Instance != null)
+        {
+        AudioManager.Instance.PlaySound("MenuTheme");
+        AudioManager.Instance.StopSound("GameLoop");
+        }
+
     }
 
     public override void UpdateState()

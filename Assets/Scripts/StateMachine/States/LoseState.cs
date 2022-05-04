@@ -8,6 +8,12 @@ public class LoseState : BaseState
     {
         base.EnterState(stateMachine);
         UIManager.Instance.ShowLoseScreen();
+
+        if (AudioManager.Instance !=null)
+        {
+        AudioManager.Instance.PlaySound("MenuTheme");
+        AudioManager.Instance.StopSound("GameLoop");
+        }
     }
 
     public override void UpdateState()

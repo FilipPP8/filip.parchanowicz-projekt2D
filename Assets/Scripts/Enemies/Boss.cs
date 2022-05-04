@@ -99,7 +99,10 @@ public class Boss : Enemy
 
         createdBullet.Shoot(Vector3.left);
         }
- 
+    if (AudioManager.Instance !=null)    
+    {
+    AudioManager.Instance.PlaySound("EnemyShoot");
+    }
     }
 
     private void ShootRockets()
@@ -111,6 +114,10 @@ public class Boss : Enemy
 
         createdRocket.Shoot(Vector3.left);
         }
+    if (AudioManager.Instance !=null)    
+    {
+    AudioManager.Instance.PlaySound("EnemyShoot");
+    }
     }
 
 

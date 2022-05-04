@@ -39,6 +39,11 @@ public class PlayerBulletShooter : MonoBehaviour
             createdBullet.Shoot(Vector3.right);
         }
 
+        if (AudioManager.Instance != null)
+        {
+        AudioManager.Instance.PlaySound("PlayerShoot");
+        }
+
     }
 
     private void OnDestroy() 

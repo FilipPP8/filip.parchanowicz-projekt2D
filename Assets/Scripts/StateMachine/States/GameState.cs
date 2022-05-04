@@ -31,7 +31,11 @@ public class GameState : BaseState
         
         GameEvents.OnEnemyDied += GameEvents_OnEnemyDied;
 
-
+        if (AudioManager.Instance != null)
+        {
+        AudioManager.Instance.PlaySound("GameLoop");
+        AudioManager.Instance.StopSound("MenuTheme");
+        }
     }
 
     public override void UpdateState()

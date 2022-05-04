@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 7797460610991085494}
   - component: {fileID: 1713796029929343160}
   - component: {fileID: 279985076941803565}
-  - component: {fileID: 1278932404551237404}
+  - component: {fileID: 754396452508047647}
   m_Layer: 8
   m_Name: EnemyShip
   m_TagString: BasicEnemy
@@ -5006,8 +5006,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &1278932404551237404
-CapsuleCollider2D:
+--- !u!60 &754396452508047647
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5019,6 +5019,36 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013748765, y: 0.0025157332}
-  m_Size: {x: 0.899246, y: 1.6377231}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.3049001, y: 0.22772583}
+      - {x: 0.2075148, y: 0.27580354}
+      - {x: 0.07383368, y: 0.21132082}
+      - {x: 0.023947828, y: 0.3237002}
+      - {x: 0.11706664, y: 0.5066452}
+      - {x: 0.121751174, y: 0.64650553}
+      - {x: 0.023220517, y: 0.8018269}
+      - {x: -0.11934195, y: 0.79596376}
+      - {x: -0.4341938, y: 0.15970106}
+      - {x: -0.37725505, y: -0.0007955944}
+      - {x: -0.43395025, y: -0.15782657}
+      - {x: -0.112867415, y: -0.79361796}
+      - {x: 0.021895714, y: -0.7917016}
+      - {x: 0.12084992, y: -0.60547715}
+      - {x: 0.100165546, y: -0.48982668}
+      - {x: 0.013994798, y: -0.33517528}
+      - {x: 0.08273397, y: -0.21068732}
+      - {x: 0.17668487, y: -0.25691074}
+      - {x: 0.36983365, y: -0.18697624}
+      - {x: 0.4704578, y: -0.13703285}
+      - {x: 0.47368866, y: 0.13577881}

@@ -6,12 +6,13 @@ using TMPro;
 public class LoseView : BaseView
 {
 
+    [SerializeField] StateMachine _gameStateMachine;
     [SerializeField] TMP_Text _highscore;
     public override void ShowView()
     {
         base.ShowView();
         _highscore.text = "Highscore:\n" + PlayerPrefs.GetInt("Highscore").ToString();
-
+ 
     }
 
     public void ResetHighscore()
@@ -24,6 +25,14 @@ public class LoseView : BaseView
     {
         Application.Quit();
     }
+
+public void OnMainMenuButtonPressed()
+{
+    _gameStateMachine.EnterState(new MenuState());
+    HideView();
+}
+
+
 
     
 }

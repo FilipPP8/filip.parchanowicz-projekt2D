@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
         
         OnPlayerRespawned?.Invoke();
 
-        //_trailRenderer.Clear(); -> do wyczyszcenia vertexów traili (dodać je w serializefieldach)
     }
 
     private void SwitchPlayerCollider(bool state)

@@ -23,6 +23,7 @@ public class HUDView : BaseView
         UpdateText(PlayerController.Instance.HealthSystem.CurrentHp);
 
         GameEvents.OnGamePaused += GameEvents_OnGamePaused;
+        
     }
 
     private void GameEvents_OnGamePaused(bool pauseState)
@@ -49,6 +50,11 @@ public class HUDView : BaseView
         base.HideView();
         GameEvents.OnGamePaused -= GameEvents_OnGamePaused;
 
+    }
+
+    public void OnQuitGameButtonPressed()
+    {
+        Application.Quit();
     }
 
 }

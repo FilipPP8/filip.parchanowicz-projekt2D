@@ -66,6 +66,11 @@ protected virtual void Shoot()
         transform.position, Quaternion.identity);
 
         createdBullet.Shoot(Vector3.left);
+        
+    if (AudioManager.Instance !=null)    
+    {
+    AudioManager.Instance.PlaySound("EnemyShoot");
+    }
 }
 
 
